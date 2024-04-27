@@ -1,0 +1,41 @@
+﻿# Visual Studio specific files
+.vs/
+*.suo
+*.user
+
+# Binaries and build artifacts
+bin/
+obj/
+
+# IDE and editor directories
+.vscode/
+
+# NuGet and package manager directories
+packages/
+node_modules/
+
+# Compiled code
+*.dll
+*.exe
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS or editor generated files
+Thumbs.db
+.DS_Store
+
+# Generated files or folders
+*.generated.cs
+
+# Dependency-related files
+*.lock
+*.sln.cache
+*.suo
+*.user
+
+# Configuration files (if not environment-specific)
+*.config
+
+/.WalletApi/appsettings.json
