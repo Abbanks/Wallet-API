@@ -38,4 +38,6 @@ Thumbs.db
 # Configuration files (if not environment-specific)
 *.config
 
-/.WalletApi/appsettings.json
+# Ignoring app settings files
+appsettings.json
+appsettings.Development.json
