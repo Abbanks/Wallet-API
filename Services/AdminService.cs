@@ -12,6 +12,7 @@ namespace WalletApi.Services
         private readonly UserManager<AppUser> _userManager = userManager;
         private readonly IRepositoryService _repositoryService = repositoryService;
         private readonly IWalletService _walletService = walletService;
+
         public async Task<bool> PromoteOrDemoteUser(string userId, string roleName)
         {
             var user = await _userManager.FindByIdAsync(userId);
