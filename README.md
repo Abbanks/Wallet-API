@@ -3,7 +3,7 @@
 ## Project Overview
 WalletAPI provides a wallet system that supports different types of users: Noob, Elite, and Admin. Each user type has specific functionalities and restrictions regarding wallet creation, funding, and withdrawals.
 
-# Project Layout
+## Project Layout
 
 ## User Types
 **Noob User**
@@ -26,14 +26,13 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 - Can promote or demote Noobs or Elite users.
 
 ## API Endpoints
-Authentication
-Register
-Endpoint: /api/auth/register
-Method: POST
-Description: Register a new user.
-Request Body:
-json
-Copy code
+##### Authentication
+
+**Register**
+- **Endpoint**: /api/auth/register
+- **Method**: POST
+- **Description**: Register a new user.
+- **Request Body**:
 {
   "username": "string",
   "password": "string",
@@ -41,49 +40,71 @@ Copy code
   "mainCurrency": "string"
 }
 
-**GET: http://localhost:[port]/User/all?page=[currentnumber]**
+**Login**
+- **Endpoint**: /api/auth/login
+- **Method**: POST
+- **Description**: Authenticate a user and obtain a token.
+- **Request Body**:
+{
+  "username": "string",
+  "password": "string"
+}
 
--   **Description**: Retrieves a paginated list of all contacts.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin role required.
--   **Pagination**: The list is limited to 50 records per page.
+#### Wallet Management
+**Create Wallet**
+- **Endpoint**: /api/wallet/create
+- **Method**: POST
+- **Description**: Create a new wallet (for Elite users).
+- **Request Body**:
+{
+  "currency": "string"
+}
 
-**GET: http://localhost:[port]/User/[id]**
-
--   **Description**: Retrieves a single contact by ID.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin or Regular role required.
-
-**GET: http://localhost:[port]/Search?term=[search-term]**
-
--   **Description**: Retrieves a paginated list of contacts based on a search term.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin or Regular role required.
--   **Pagination**: The list is limited to 50 records per page.
-
-**POST: http://localhost:[port]/User/add**
-
--   **Description**: Creates a new user.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Regular role required.
-
-**PUT: http://localhost:[port]/User/update/[id]**
-
--   **Description**: Updates a user's details.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin or Regular role required.
-
-**DELETE: http://localhost:[port]/User/delete/[id]**
-
--   **Description**: Deletes a user.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin role required.
-
-**PATCH: http://localhost:[port]/User/photo/[id]**
-
--   **Description**: Updates a user's profile picture.
--   **Authentication**: JWT authentication required.
--   **Authorization**: Admin or Regular role required.
+**Fund Wallet**
+- **Endpoint**: /api/wallet/fund
+Method: POST
+Description: Fund a user's wallet.
+Request Body:
+json
+Copy code
+{
+  "userId": "string",
+  "currency": "string",
+  "amount": "number"
+}
+Withdraw from Wallet
+Endpoint: /api/wallet/withdraw
+Method: POST
+Description: Withdraw funds from a user's wallet.
+Request Body:
+json
+Copy code
+{
+  "currency": "string",
+  "amount": "number"
+}
+User Management (Admin)
+Promote User
+Endpoint: /api/admin/promote
+Method: POST
+Description: Promote a Noob user to Elite.
+Request Body:
+json
+Copy code
+{
+  "userId": "string"
+}
+Demote User
+Endpoint: /api/admin/demote
+Method: POST
+Description: Demote an Elite user to Noob.
+Request Body:
+json
+Copy code
+{
+  "userId": "string"
+}
+Models
 
 ### User Roles
 
