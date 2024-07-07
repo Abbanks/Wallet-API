@@ -29,102 +29,107 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 ### Authentication
 
 **Register**
-- **Endpoint**: /api/auth/register
-- **Method**: POST
+- **Endpoint**: `/api/auth/register`
+- **Method**: `POST`
 - **Description**: Register a new user.
 - **Request Body**:
-{
+```{
   "username": "string",
   "password": "string",
   "userType": "Noob | Elite | Admin",
   "mainCurrency": "string"
-}
+}```
 
 **Login**
-- **Endpoint**: /api/auth/login
-- **Method**: POST
+- **Endpoint**: `/api/auth/login`
+- **Method**: `POST`
 - **Description**: Authenticate a user and obtain a token.
 - **Request Body**:
-{
+```{
   "username": "string",
   "password": "string"
-}
+}```
 
 ### Wallet Management
 **Create Wallet**
-- **Endpoint**: /api/wallet/create
-- **Method**: POST
+- **Endpoint**: `/api/wallet/create`
+- **Method**: `POST`
 - **Description**: Create a new wallet (for Elite users).
 - **Request Body**:
-{
+```{
   "currency": "string"
-}
+}```
 
 **Fund Wallet**
-- **Endpoint**: /api/wallet/fund
-- **Method**: POST
+- **Endpoint**: `/api/wallet/fund`
+- **Method**: `PUT`
 - **Description**: Fund a user's wallet.
 - **Request Body**:
- {
+ ```{
   "userId": "string",
   "currency": "string",
   "amount": "number"
-}
+}```
 
 **Withdraw from Wallet**
-- **Endpoint**: /api/wallet/withdraw
-- **Method**: POST
+- **Endpoint**: `/api/wallet/withdraw`
+- **Method**: `PUT`
 - **Description**: Withdraw funds from a user's wallet.
 - **Request Body**:
-{
+```{
   "currency": "string",
   "amount": "number"
-}
+}```
 
 ### User Management (Admin)
 **Promote User**
-- **Endpoint**: /api/admin/promote
-- **Method**: POST
+- **Endpoint**: `/api/admin/promote`
+- **Method**: `PUT`
 - **Description**: Promote a Noob user to Elite.
 - **Request Body**:
-{
+```{
   "userId": "string"
-}
+}```
 
 **Demote User**
-- **Endpoint**: /api/admin/demote
-- **Method**: POST
+- **Endpoint**: `/api/admin/demote`
+- **Method**: `PUT`
 - **Description**: Demote an Elite user to Noob.
 - **Request Body**:
-{
+```{
   "userId": "string"
-}
+}```
 
 ### Models
 **User**
 - **Attributes**:
  - `id: string`
-username: string
-password: string
-userType: string (Noob | Elite | Admin)
-mainCurrency: string
-wallets: array (for Elite users)
-Wallet
-Attributes:
-id: string
-userId: string
-currency: string
-balance: number
- 
+ - `username: string`
+ - `password: string`
+ - `userType: string (Noob | Elite | Admin)`
+ - `mainCurrency: string`
+ - `wallets: array (for Elite users)`
 
+**Wallet**
+- **Attributes**:
+ - `id: string`
+ - `userId: string`
+ - `currency: string`
+ - `balance: number`
+
+### Currency Conversion
+For currency conversion, the API utilizes the Fixer.io service.
+
+Example Conversion Endpoint
+GET /api/conversion: Convert between currencies using Fixer.io.
+ 
 ## Libraries and Framework used
 The project leverages the following libraries and framework:
 - ASP.NET Core
 - Entity Framework Core
 - Microsoft SQL Server
-- Cloudinary
-- ASP.NET Authentication
-- ASP.NET Identity
+- JWT (JSON Web Tokens)
+- AutoMapper
 
  
  
