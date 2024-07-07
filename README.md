@@ -5,7 +5,7 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 
 ## Project Layout
 
-## User Types
+### User Types
 **Noob User**
 - Can only have a wallet in a single currency selected at signup (main currency).
 - All wallet funding in a different currency should be converted to the main currency.
@@ -26,7 +26,7 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 - Can promote or demote Noobs or Elite users.
 
 ## API Endpoints
-##### Authentication
+## Authentication
 
 **Register**
 - **Endpoint**: /api/auth/register
@@ -50,7 +50,7 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
   "password": "string"
 }
 
-#### Wallet Management
+## Wallet Management
 **Create Wallet**
 - **Endpoint**: /api/wallet/create
 - **Method**: POST
@@ -62,28 +62,26 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 
 **Fund Wallet**
 - **Endpoint**: /api/wallet/fund
-Method: POST
-Description: Fund a user's wallet.
-Request Body:
-json
-Copy code
-{
+- **Method**: POST
+- **Description**: Fund a user's wallet.
+- **Request Body**:
+ {
   "userId": "string",
   "currency": "string",
   "amount": "number"
 }
-Withdraw from Wallet
-Endpoint: /api/wallet/withdraw
-Method: POST
-Description: Withdraw funds from a user's wallet.
-Request Body:
-json
-Copy code
+
+**Withdraw from Wallet**
+- **Endpoint**: /api/wallet/withdraw
+- **Method**: POST
+- **Description**: Withdraw funds from a user's wallet.
+- **Request Body**:
 {
   "currency": "string",
   "amount": "number"
 }
-User Management (Admin)
+
+### User Management (Admin)
 Promote User
 Endpoint: /api/admin/promote
 Method: POST
