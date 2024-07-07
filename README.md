@@ -26,7 +26,7 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 - Can promote or demote Noobs or Elite users.
 
 ## API Endpoints
-## Authentication
+### Authentication
 
 **Register**
 - **Endpoint**: /api/auth/register
@@ -50,7 +50,7 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
   "password": "string"
 }
 
-## Wallet Management
+### Wallet Management
 **Create Wallet**
 - **Endpoint**: /api/wallet/create
 - **Method**: POST
@@ -82,39 +82,40 @@ WalletAPI provides a wallet system that supports different types of users: Noob,
 }
 
 ### User Management (Admin)
-Promote User
-Endpoint: /api/admin/promote
-Method: POST
-Description: Promote a Noob user to Elite.
-Request Body:
-json
-Copy code
+**Promote User**
+- **Endpoint**: /api/admin/promote
+- **Method**: POST
+- **Description**: Promote a Noob user to Elite.
+- **Request Body**:
 {
   "userId": "string"
 }
-Demote User
-Endpoint: /api/admin/demote
-Method: POST
-Description: Demote an Elite user to Noob.
-Request Body:
-json
-Copy code
+
+**Demote User**
+- **Endpoint**: /api/admin/demote
+- **Method**: POST
+- **Description**: Demote an Elite user to Noob.
+- **Request Body**:
 {
   "userId": "string"
 }
-Models
 
-### User Roles
-
-**Admin**
-
--   **Description**: Has full access to all API endpoints.
--   **Permissions**: Can get paginated records of existing contacts, get a single record of existing contacts either by ID, get paginated records of existing contacts using a search term, delete contacts, and update own record.
-
-**Regular**
-
--   **Description**: Has limited access to API endpoints.
--   **Permissions**: Can register, update their details, get a single record of existing contacts either by ID, and get paginated records of existing contacts using a search term.
+### Models
+**User**
+- **Attributes**:
+ - `id: string`
+username: string
+password: string
+userType: string (Noob | Elite | Admin)
+mainCurrency: string
+wallets: array (for Elite users)
+Wallet
+Attributes:
+id: string
+userId: string
+currency: string
+balance: number
+ 
 
 ## Libraries and Framework used
 The project leverages the following libraries and framework:
